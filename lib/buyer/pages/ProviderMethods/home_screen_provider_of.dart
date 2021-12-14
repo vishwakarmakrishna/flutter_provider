@@ -7,13 +7,13 @@ class HomeProviderOfScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var providerOfContextWatch = Provider.of<HomeScreenProvider>(context);
-    var providerOfContextRead =
+    var providerOfContextRead = Provider.of<HomeScreenProvider>(context);
+    var providerOfContextWatch =
         Provider.of<HomeScreenProvider>(context, listen: false);
     return Material(
         child: SafeArea(
             child: Container(
-      color: providerOfContextRead.isEligible == true
+      color: providerOfContextWatch.isEligible == true
           ? Colors.green.shade400
           : Colors.red.shade400,
       child: Column(
@@ -21,7 +21,7 @@ class HomeProviderOfScreen extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(8),
             child: Text(
-              '${providerOfContextRead.eligibleMessage}',
+              '${providerOfContextWatch.eligibleMessage}',
             ),
           ),
           Padding(
@@ -30,7 +30,7 @@ class HomeProviderOfScreen extends StatelessWidget {
               onChanged: (value) {
                 if (value.isEmpty) return;
                 int age = int.tryParse(value) ?? 0;
-                providerOfContextWatch.checkEligiblity(age);
+                providerOfContextRead.checkEligiblity(age);
               },
               keyboardType: TextInputType.number,
               decoration: const InputDecoration(hintText: "Enter your age"),

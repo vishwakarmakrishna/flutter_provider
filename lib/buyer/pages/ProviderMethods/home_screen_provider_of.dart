@@ -26,7 +26,8 @@ class HomeProviderOfScreen extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(20),
-            child: TextField(
+            child: TextFormField(
+              initialValue: providerOfContextWatch.getage.toString(),
               onChanged: (value) {
                 if (value.isEmpty) return;
                 int age = int.tryParse(value) ?? 0;

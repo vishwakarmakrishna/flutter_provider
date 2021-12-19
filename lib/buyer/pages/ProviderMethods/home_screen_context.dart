@@ -23,7 +23,9 @@ class HomeContextScreen extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(20),
-              child: TextField(
+              child: TextFormField(
+                initialValue:
+                    context.watch<HomeScreenProvider>().getage.toString(),
                 onChanged: (value) {
                   if (value.isEmpty) return;
                   int age = int.tryParse(value) ?? 0;
